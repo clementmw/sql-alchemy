@@ -9,8 +9,8 @@ engine  = create_engine('sqlite:///hotel.db')
 class Restaurant(Base):
     __tablename__ = 'restaurants'
 
-    id = Column(Integer(), primary_key = True),
-    name = Column(String()),
+    id = Column(Integer(), primary_key = True)
+    name = Column(String())
     price = Column(Integer())
 
 def __repr__(self):
@@ -21,8 +21,8 @@ def __repr__(self):
 class Customer(Base):
       __tablename__ = 'customers'
 
-      id  = Column(Integer(), primary_key= True),
-      first_name = Column(String()),
+      id  = Column(Integer(), primary_key= True)
+      first_name = Column(String())
       last_name = Column(String())
 
 def __repr__(self):
