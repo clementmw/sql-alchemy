@@ -4,6 +4,9 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+faker = "==22.0.0"
+sqlalchemy = "==2.0.24"
+alembic = "*"
 
 [dev-packages]
 
