@@ -31,6 +31,7 @@ class Customer(Base):
       first_name = Column(String())
       last_name = Column(String())
 
+      #to establish a connection to reviews
       reviews = relationship('Review',backref = 'customer')
 
       def __repr__ (self):
