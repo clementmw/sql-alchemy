@@ -17,10 +17,12 @@ class Restaurant(Base):
     #to establish a connection to reviews
     reviews  = relationship('Review',backref = 'restaurant')
 
-def __repr__(self):
-        return f"restaurant  {self.id}: " \
-            + f"{self.name}, " \
-            + f"{self.price}"
+    def __repr__(self):
+          return f"resturant {self.id}:"\
+          + f"name {self.name} "\
+          + f"price: {self.price}"
+
+
 
 class Customer(Base):
       __tablename__ = 'customers'
@@ -31,12 +33,13 @@ class Customer(Base):
 
       reviews = relationship('Review',backref = 'customer')
 
+      def __repr__ (self):
+             return f"customer {self.id}:"\
+             + f"{self.first_name}  "\
+             + f"{self.last_name}"
+
     
 
-def __repr__(self):
-        return f"customer {self.id}: " \
-            + f"first name {self.first_name}, " \
-            + f" last name {self.last_name}"
 
 
 class Review (Base):
@@ -49,7 +52,9 @@ class Review (Base):
        restaurant_id = Column(Integer(), ForeignKey('restaurants.id'))
        customer_id = Column(Integer(), ForeignKey('customers.id'))
 
-def __repr__(self):
-        return f"review {self.id}: " \
-            + f"{self.star_rating}, " 
+       def __repr__(self):
+             return f"review {self.id}:"\
+             + f"star rating {self.star_rating}"
+
+
            
