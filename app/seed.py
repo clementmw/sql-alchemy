@@ -1,4 +1,5 @@
 from faker import Faker
+from sqlalchemy import desc,func
 from sqlalchemy.orm import sessionmaker
 from models import engine, Base, Restaurant, Customer, Review
 
@@ -68,5 +69,9 @@ for customer in all_customers:
     for review in customer.reviews:
         print(f"Customer: {customer.first_name} , Restaurant: {review.restaurant.name}")
 
+full_name = session.query (func.concat(Customer.first_name,' ',Customer.last_name).label('full_name')).all()
 
+for name in full_name:
+    print(name.full_name)
+    
 session.close()
