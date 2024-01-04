@@ -43,26 +43,30 @@ session.commit()
 
 
 
-# Get the first customer and print their reviews
+# Get reviews
+
+get_reviews = session.query(Review).all()
+
+for review in get_reviews:
+    customer = review.customer
+    restaurant = review.restaurant
+    # print(f"review {review.id}:  {customer.first_name}")
+    # print(f"restaurant:  {restaurant.name} ")
 
 
 # Get all restaurants and print their reviews and customers
 all_restaurants = session.query(Restaurant).all()
-
-# print (f"{all_restaurants}")
+        # print (f"{all_restaurants}")
 
 for restaurant in all_restaurants:
     for review in restaurant.reviews:
-        print(f"{restaurant}")
-        print(f" {review}")
-    for customer in restaurant.reviews:
-        print(f" {customer}")
-
+        print(f"Restaurant: {restaurant.name} , Rating: {review.star_rating}, Customer :{review.customer.first_name}")
+    
 # Get all customers and print their reviews
-# all_customers = session.query(Customer).all()
-# for customer in all_customers:
-#     print(f"customer: {customer}")
-#     for review in customer.reviews:
-#         print(f"  review: {review}")
+all_customers = session.query(Customer).all()
+for customer in all_customers:
+    for review in customer.reviews:
+        print(f"Customer: {customer.first_name} , Restaurant: {review.restaurant.name}")
+
 
 session.close()
